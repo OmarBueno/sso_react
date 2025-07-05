@@ -13,9 +13,10 @@ Esta aplicación demuestra cómo realizar Single Sign-On (SSO) con Microsoft Ent
    npm install
    ```
 3. Inicia la aplicación de desarrollo:
-   ```bash
-   npm start
-   ```
+  ```bash
+  npm start
+  ```
+   Si la página aparece en blanco asegúrate de haber ejecutado primero `npm install` y de que los valores en `.env` sean correctos.
 
 ## Cómo funciona
 - Se utiliza **MSAL** para manejar la autenticación en el navegador sin almacenar secretos en el código.

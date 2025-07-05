@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useMsal, AuthenticatedTemplate, UnauthenticatedTemplate } from '@azure/msal-react';
-import { loginRequest } from './authConfig';
+import { loginRequest, msalConfig } from './authConfig';
 import { Client } from '@microsoft/microsoft-graph-client';
 import './App.css';
 
 function App() {
   const { instance, accounts } = useMsal();
   const [profile, setProfile] = useState(null);
+
+  if (!msalConfig.auth.clientId || !msalConfig.auth.authority.includes('https://')) {
+    return (
+      <div className="container">
+        <p>Configuración de Azure faltante. Revisa tu archivo <code>.env</code>.</p>
+      </div>
+    );
+  }
 
   const handleLogin = () => {
     instance.loginPopup(loginRequest).catch(err => console.error(err));
